@@ -742,6 +742,12 @@ button, input, textarea {
 
 .portfolio-grid {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.portfolio-pair {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
@@ -1492,9 +1498,7 @@ button, input, textarea {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1556,6 +1560,10 @@ button, input, textarea {
   }
 
   .portfolio-grid {
+    gap: 20px;
+  }
+
+  .portfolio-pair {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
