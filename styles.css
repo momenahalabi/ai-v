@@ -747,9 +747,14 @@ button, input, textarea {
 }
 
 .portfolio-pair {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 20px;
+}
+
+.portfolio-pair .portfolio-item {
+  flex: 0 0 calc(50% - 10px);
+  max-width: calc(50% - 10px);
 }
 
 .portfolio-item {
@@ -774,12 +779,13 @@ button, input, textarea {
 
 .portfolio-thumb-sm {
   position: relative;
+  width: 100%;
   aspect-ratio: 9/16;
-  max-height: 280px;
   background: linear-gradient(180deg, #14102a 0%, #0c0e18 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .portfolio-thumb-sm.thumb-3 { background: linear-gradient(180deg, #1e1438 0%, #101428 100%); }
