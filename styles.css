@@ -741,20 +741,15 @@ button, input, textarea {
 }
 
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .portfolio-pair {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.portfolio-pair .portfolio-item {
-  flex: 0 0 calc(50% - 10px);
-  max-width: calc(50% - 10px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
 .portfolio-item {
@@ -780,7 +775,7 @@ button, input, textarea {
 .portfolio-thumb-sm {
   position: relative;
   width: 100%;
-  aspect-ratio: 9/16;
+  aspect-ratio: 9 / 16;
   background: linear-gradient(180deg, #14102a 0%, #0c0e18 100%);
   display: flex;
   align-items: center;
