@@ -1025,50 +1025,25 @@ button, input, textarea {
 
 .about-card {
   position: relative;
-  aspect-ratio: 1;
-  max-width: 320px;
+  max-width: 380px;
   margin: 0 auto;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: none;
   border-radius: var(--radius-xl);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 
 .about-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(124, 106, 239, 0.16) 0%, transparent 60%);
+  display: none;
 }
 
-.about-avatar {
-  width: 120px;
-  height: 120px;
-  background: var(--gradient);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: 700;
-  position: relative;
-  z-index: 1;
-}
-
-.about-badge {
-  margin-top: 20px;
-  padding: 8px 20px;
-  background: var(--accent-soft);
+.about-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--accent-border);
-  border-radius: 50px;
-  font-size: 0.85rem;
-  color: var(--accent-light);
-  position: relative;
-  z-index: 1;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45), 0 0 40px var(--accent-glow);
 }
 
 .about-text {
