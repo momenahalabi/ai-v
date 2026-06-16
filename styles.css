@@ -742,7 +742,7 @@ button, input, textarea {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -1551,9 +1551,13 @@ button, input, textarea {
   .portfolio-featured,
   .services-grid,
   .benefits-grid,
-  .process-timeline,
-  .portfolio-grid {
+  .process-timeline {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   .about-features {
