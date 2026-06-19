@@ -585,6 +585,34 @@ button, input, textarea {
   border: 0;
 }
 
+/* Intro video at top (muted autoplay) */
+.intro-video {
+  padding-top: var(--header-h);
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), transparent);
+  border-bottom: 1px solid var(--border);
+}
+.intro-video-inner {
+  max-width: 900px;
+  margin: 18px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 9/16;
+}
+.intro-video-inner iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .intro-video-inner {
+    max-width: 420px;
+    margin: 18px 0 0 auto;
+  }
+}
+
 .portfolio-thumb-video {
   position: relative;
   aspect-ratio: 9/16;

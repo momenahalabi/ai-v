@@ -93,3 +93,42 @@ if (chartBars) {
 
   chartObserver.observe(chartBars);
 }
+
+// Intro video: ensure autoplay (muted) and attempt JS play as fallback
+document.addEventListener('DOMContentLoaded', () => {
+  const introIframe = document.getElementById('introVideoIframe');
+  if (!introIframe) return;
+
+  try {
+    // Ensure query params
+    const url = new URL(introIframe.src);
+    url.searchParams.set('autoplay', '1');
+    url.searchParams.set('mute', '1');
+    url.searchParams.set('playsinline', '1');
+    url.searchParams.set('enablejsapi', '1');
+    introIframe.src = url.toString();
+  } catch (e) {}
+
+  function sendPlayCommand() {
+    try {
+      introIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}', '*');
+    } catch (e) {}
+  }
+
+  // Try immediately and shortly after
+  sendPlayCommand();
+  setTimeout(sendPlayCommand, 400);
+
+  // On first user interaction, unmute and continue playing
+  const unmuteOnInteraction = () => {
+    try {
+      introIframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":[]}', '*');
+      introIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":[]}', '*');
+    } catch (e) {}
+    window.removeEventListener('click', unmuteOnInteraction);
+    window.removeEventListener('touchstart', unmuteOnInteraction);
+  };
+
+  window.addEventListener('click', unmuteOnInteraction, { once: true });
+  window.addEventListener('touchstart', unmuteOnInteraction, { once: true });
+});
