@@ -11,21 +11,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Intro Video (autoplay on load, muted) -->
-  <div class="intro-video" id="introVideoWrap">
-    <div class="container">
-      <div class="intro-video-inner">
-        <iframe
-          id="introVideoIframe"
-          src="https://www.youtube.com/embed/wVPi88hYLLE?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
-          title="مؤمن الحلبي — تقديم الخدمات"
-          allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-          allowfullscreen
-          loading="eager"
-        ></iframe>
-      </div>
-    </div>
-  </div>
   <!-- Navigation -->
   <header class="header" id="header">
     <nav class="nav container">
@@ -62,34 +47,54 @@
       <div class="hero-glow hero-glow-2"></div>
     </div>
     <div class="container hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        AI Ad Designer
-      </div>
-      <h1 class="hero-title">
-        إعلانات <span class="gradient-text">بالذكاء الاصطناعي</span> تحوّل أفكارك إلى قصص بصرية لا تُنسى
-      </h1>
-      <p class="hero-desc">
-        أصنع إعلانات AI سينمائية عالية الجودة للعلامات التجارية والمتاجر والمشاريع، مصممة خصيصاً للحملات الإعلانية ومنصات التواصل.
-      </p>
-      <div class="hero-buttons">
-        <a href="https://wa.me/970597535504?text=مرحباً%20مؤمن،%20أريد%20بدء%20مشروع%20إعلاني" class="btn btn-primary" target="_blank" rel="noopener">ابدأ مشروعك</a>
-        <a href="#portfolio" class="btn btn-outline">شاهد إعلاناتي</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">50+</span>
-          <span class="stat-label">إعلان منجز</span>
+      <div class="hero-grid-layout">
+        <div class="hero-text-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            AI Ad Designer
+          </div>
+          <h1 class="hero-title">
+            إعلانات <span class="gradient-text">بالذكاء الاصطناعي</span> تحوّل أفكارك إلى قصص بصرية لا تُنسى
+          </h1>
+          <p class="hero-desc">
+            أصنع إعلانات AI سينمائية عالية الجودة للعلامات التجارية والمتاجر والمشاريع، مصممة خصيصاً للحملات الإعلانية ومنصات التواصل.
+          </p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/970597535504?text=مرحباً%20مؤمن،%20أريد%20بدء%20مشروع%20إعلاني" class="btn btn-primary" target="_blank" rel="noopener">ابدأ مشروعك</a>
+            <a href="#portfolio" class="btn btn-outline">شاهد إعلاناتي</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">إعلان منجز</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">5x</span>
+              <span class="stat-label">متوسط ROAS</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+              <span class="stat-number">70%</span>
+              <span class="stat-label">توفير في التكلفة</span>
+            </div>
+          </div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">5x</span>
-          <span class="stat-label">متوسط ROAS</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">70%</span>
-          <span class="stat-label">توفير في التكلفة</span>
+        <div class="hero-video-wrap">
+          <div class="intro-video-inner">
+            <iframe
+              id="introVideoIframe"
+              src="https://www.youtube.com/embed/wVPi88hYLLE?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1"
+              title="مؤمن الحلبي — تقديم الخدمات"
+              allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+              allowfullscreen
+              loading="eager"
+            ></iframe>
+          </div>
+          <div class="video-caption">
+            <span class="caption-icon">🎬</span>
+            <span>مؤمن الحلبي | إعلانات ذكاء اصطناعي سينمائية مبتكرة لتنمية مبيعاتك</span>
+          </div>
         </div>
       </div>
     </div>
@@ -160,68 +165,26 @@
         </p>
       </div>
 
-      <div class="portfolio-featured reveal">
-        <div class="portfolio-card large">
-          <div class="portfolio-thumb portfolio-thumb-video">
-            <iframe
-              src="https://www.youtube.com/embed/pQousBw_h0k"
-              title="إعلان بالذكاء الاصطناعي — مؤمن الحلبي"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-          <div class="portfolio-info">
-            <h3>إعلان 1 | بالذكاء الاصطناعي</h3>
-            <span class="portfolio-tag">إعلان AI</span>
-          </div>
-        </div>
-        <div class="portfolio-card large">
-          <div class="portfolio-thumb portfolio-thumb-video">
-            <iframe
-              src="https://www.youtube.com/embed/wMiXPmCguUU"
-              title="إعلان 2 — مؤمن الحلبي"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-          <div class="portfolio-info">
-            <h3>إعلان 2 | بالذكاء الاصطناعي</h3>
-            <span class="portfolio-tag">إعلان AI</span>
-          </div>
-        </div>
-        <div class="portfolio-card large">
-          <div class="portfolio-thumb portfolio-thumb-video">
-            <iframe
-              src="https://www.youtube.com/embed/EFV0o0pupoQ"
-              title="إعلان 3 — مؤمن الحلبي"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
-          <div class="portfolio-info">
-            <h3>إعلان 3 | بالذكاء الاصطناعي</h3>
-            <span class="portfolio-tag">إعلان AI</span>
-          </div>
-        </div>
-        <div class="portfolio-card large">
+      <div class="section-subheader reveal" style="margin-top: 20px; margin-bottom: 24px;">
+        <h3>الفيديوهات الكاملة (16:9)</h3>
+        <p>أعمال إعلانية سينمائية متكاملة مصممة للمواقع والمنصات الكبرى</p>
+      </div>
+
+            <!-- YOUTUBE_FULL_START -->
+      <div class="full-videos-grid reveal">
+        <div class="full-video-card">
           <div class="portfolio-thumb portfolio-thumb-video wide">
             <iframe
               src="https://www.youtube.com/embed/tgitNKCbQNc"
-              title="إعلان 4 — مؤمن الحلبي"
+              title="إعلان سينمائي"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
               loading="lazy"
             ></iframe>
           </div>
-          <div class="portfolio-info">
-            <h3>إعلان 4 | سينمائي بالذكاء الاصطناعي</h3>
-            <span class="portfolio-tag">إعلان AI</span>
-          </div>
         </div>
       </div>
+      <!-- YOUTUBE_FULL_END -->
 
       <div class="section-subheader reveal">
         <h3>إعلانات صُممت لتناسب إيقاع المنصات الحديثة</h3>
@@ -229,7 +192,7 @@
       </div>
 
       <div class="portfolio-grid reveal">
-                <!-- YOUTUBE_GRID_START -->
+                        <!-- YOUTUBE_GRID_START -->
         <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/TrgonAs9B-g" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
@@ -302,15 +265,6 @@
             </div>
             <h4>إعلان 3 | بالذكاء الاصطناعي</h4>
           </a>
-          <a href="https://youtu.be/tgitNKCbQNc" class="portfolio-item" target="_blank" rel="noopener">
-            <div class="portfolio-thumb-sm portfolio-thumb-yt">
-              <img src="https://img.youtube.com/vi/tgitNKCbQNc/hqdefault.jpg" alt="إعلان 4 | سينمائي بالذكاء الاصطناعي">
-              <div class="play-btn sm"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-            </div>
-            <h4>إعلان 4 | سينمائي بالذكاء الاصطناعي</h4>
-          </a>
-        </div>
-        <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/sueHysCNFwI" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="https://img.youtube.com/vi/sueHysCNFwI/hqdefault.jpg" alt="إعلان 5 | بالذكاء الاصطناعي">
@@ -318,6 +272,8 @@
             </div>
             <h4>إعلان 5 | بالذكاء الاصطناعي</h4>
           </a>
+        </div>
+        <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/Ngglu2t9XWI" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="https://img.youtube.com/vi/Ngglu2t9XWI/hqdefault.jpg" alt="إعلان 6 | بالذكاء الاصطناعي">
@@ -325,8 +281,6 @@
             </div>
             <h4>إعلان 6 | بالذكاء الاصطناعي</h4>
           </a>
-        </div>
-        <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/1ZJI6H55Hlo" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="https://img.youtube.com/vi/1ZJI6H55Hlo/hqdefault.jpg" alt="إعلان 7 | بالذكاء الاصطناعي">
@@ -334,6 +288,8 @@
             </div>
             <h4>إعلان 7 | بالذكاء الاصطناعي</h4>
           </a>
+        </div>
+        <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/AXuDc4UPavg" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="https://img.youtube.com/vi/AXuDc4UPavg/hqdefault.jpg" alt="إعلان 8 | بالذكاء الاصطناعي">
@@ -341,8 +297,6 @@
             </div>
             <h4>إعلان 8 | بالذكاء الاصطناعي</h4>
           </a>
-        </div>
-        <div class="portfolio-pair">
           <a href="https://www.youtube.com/shorts/YNZlHUjYURE" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="https://img.youtube.com/vi/YNZlHUjYURE/hqdefault.jpg" alt="إعلان 9 | بالذكاء الاصطناعي">

@@ -74,35 +74,58 @@ async function main() {
     const existingIds = new Set(existingVideos.map(v => v.id));
     const newVideos = [];
 
-    // RSS feeds list from newest to oldest. We want to identify videos we don't have.
+    // Identify new videos
     for (const v of fetchedVideos) {
       if (!existingIds.has(v.id)) {
         newVideos.push(v);
       }
     }
 
-    if (newVideos.length === 0) {
-      console.log('No new videos found. Everything is up to date.');
-      return;
+    if (newVideos.length > 0) {
+      console.log(`Found ${newVideos.length} new videos in RSS.`);
     }
 
-    console.log(`Found ${newVideos.length} new videos! Adding them to the website.`);
-
-    // Prepend new videos to the existing list (since they are newer)
+    // Merge lists (newest first)
     const updatedVideos = [...newVideos, ...existingVideos];
 
-    // Build the grid HTML
-    // Group into pairs (each pair has up to 2 items)
+    // Partition videos into Full Videos (Horizontal) and Shorts (Vertical)
+    // Vertical: URL contains '/shorts/'
+    // Horizontal: URL does NOT contain '/shorts/'
+    const fullVideos = updatedVideos.filter(v => !v.url.includes('/shorts/'));
+    const shortsVideos = updatedVideos.filter(v => v.url.includes('/shorts/'));
+
+    console.log(`Partitioned: ${fullVideos.length} Full Videos, ${shortsVideos.length} Shorts.`);
+
+    // 1. Build Horizontal (Full) Videos HTML - NO titles, 16:9 ratio
+    let fullHtml = '      <!-- YOUTUBE_FULL_START -->\n';
+    fullHtml += '      <div class="full-videos-grid reveal">\n';
+    for (const item of fullVideos) {
+      fullHtml += `        <div class="full-video-card">
+          <div class="portfolio-thumb portfolio-thumb-video wide">
+            <iframe
+              src="https://www.youtube.com/embed/${item.id}"
+              title="إعلان سينمائي"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>\n`;
+    }
+    fullHtml += '      </div>\n';
+    fullHtml += '      <!-- YOUTUBE_FULL_END -->';
+
+    // 2. Build Vertical (Shorts) Videos HTML - grouped in pairs, with titles
     const pairs = [];
-    for (let i = 0; i < updatedVideos.length; i += 2) {
-      pairs.push(updatedVideos.slice(i, i + 2));
+    for (let i = 0; i < shortsVideos.length; i += 2) {
+      pairs.push(shortsVideos.slice(i, i + 2));
     }
 
-    let gridHtml = '        <!-- YOUTUBE_GRID_START -->\n';
+    let shortsHtml = '        <!-- YOUTUBE_GRID_START -->\n';
     for (const pair of pairs) {
-      gridHtml += '        <div class="portfolio-pair">\n';
+      shortsHtml += '        <div class="portfolio-pair">\n';
       for (const item of pair) {
-        gridHtml += `          <a href="${item.url}" class="portfolio-item" target="_blank" rel="noopener">
+        shortsHtml += `          <a href="${item.url}" class="portfolio-item" target="_blank" rel="noopener">
             <div class="portfolio-thumb-sm portfolio-thumb-yt">
               <img src="${item.thumbnail}" alt="${item.title}">
               <div class="play-btn sm"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
@@ -110,33 +133,50 @@ async function main() {
             <h4>${item.title}</h4>
           </a>\n`;
       }
-      gridHtml += '        </div>\n';
+      shortsHtml += '        </div>\n';
     }
-    gridHtml += '        <!-- YOUTUBE_GRID_END -->';
+    shortsHtml += '        <!-- YOUTUBE_GRID_END -->';
 
     // Read index.html
     let htmlContent = fs.readFileSync(htmlPath, 'utf8');
-    
-    // Replace the HTML between comments
-    const startTag = '<!-- YOUTUBE_GRID_START -->';
-    const endTag = '<!-- YOUTUBE_GRID_END -->';
-    
-    const startIndex = htmlContent.indexOf(startTag);
-    const endIndex = htmlContent.indexOf(endTag);
 
-    if (startIndex === -1 || endIndex === -1) {
-      throw new Error(`Could not find comments ${startTag} or ${endTag} in index.html`);
+    // Replace Full Videos Section
+    const fullStartTag = '<!-- YOUTUBE_FULL_START -->';
+    const fullEndTag = '<!-- YOUTUBE_FULL_END -->';
+    const fullStartIdx = htmlContent.indexOf(fullStartTag);
+    const fullEndIdx = htmlContent.indexOf(fullEndTag);
+
+    if (fullStartIdx === -1 || fullEndIdx === -1) {
+      throw new Error(`Could not find comments ${fullStartTag} or ${fullEndTag} in index.html`);
     }
 
-    const beforeGrid = htmlContent.substring(0, startIndex);
-    const afterGrid = htmlContent.substring(endIndex + endTag.length);
+    let beforeFull = htmlContent.substring(0, fullStartIdx);
+    let afterFull = htmlContent.substring(fullEndIdx + fullEndTag.length);
+    htmlContent = beforeFull + fullHtml + afterFull;
 
-    const newHtmlContent = beforeGrid + gridHtml + afterGrid;
+    // Replace Shorts Grid Section
+    const gridStartTag = '<!-- YOUTUBE_GRID_START -->';
+    const gridEndTag = '<!-- YOUTUBE_GRID_END -->';
+    const gridStartIdx = htmlContent.indexOf(gridStartTag);
+    const gridEndIdx = htmlContent.indexOf(gridEndTag);
 
-    // Save files
-    fs.writeFileSync(jsonPath, JSON.stringify(updatedVideos, null, 2), 'utf8');
-    fs.writeFileSync(htmlPath, newHtmlContent, 'utf8');
-    console.log('Successfully updated videos.json and index.html!');
+    if (gridStartIdx === -1 || gridEndIdx === -1) {
+      throw new Error(`Could not find comments ${gridStartTag} or ${gridEndTag} in index.html`);
+    }
+
+    let beforeGrid = htmlContent.substring(0, gridStartIdx);
+    let afterGrid = htmlContent.substring(gridEndIdx + gridEndTag.length);
+    const newHtmlContent = beforeGrid + shortsHtml + afterGrid;
+
+    // Write file only if content changes
+    const originalHtml = fs.readFileSync(htmlPath, 'utf8');
+    if (originalHtml !== newHtmlContent) {
+      fs.writeFileSync(htmlPath, newHtmlContent, 'utf8');
+      fs.writeFileSync(jsonPath, JSON.stringify(updatedVideos, null, 2), 'utf8');
+      console.log('Successfully updated videos.json and index.html!');
+    } else {
+      console.log('No content changes detected in index.html. Everything is up to date.');
+    }
   } catch (error) {
     console.error('Error updating videos:', error.message);
     process.exit(1);
