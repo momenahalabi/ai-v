@@ -50,7 +50,7 @@ function parseRss(xml) {
         id: videoIdMatch[1].trim(),
         title: decodeXml(titleMatch[1].trim()),
         url: linkMatch[1].trim(),
-        thumbnail: `https://img.youtube.com/vi/${videoIdMatch[1].trim()}/hqdefault.jpg`
+        thumbnail: `https://i.ytimg.com/vi/${videoIdMatch[1].trim()}/hqdefault.jpg`
       });
     }
   }
