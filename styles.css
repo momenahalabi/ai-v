@@ -1,27 +1,27 @@
 /* ===== Variables ===== */
 :root {
-  --bg-primary: #07080f;
-  --bg-secondary: #0c0e18;
-  --bg-card: #111425;
-  --bg-card-hover: #171b30;
-  --border: rgba(124, 106, 239, 0.1);
-  --border-hover: rgba(124, 106, 239, 0.28);
-  --text-primary: #f0f2fa;
-  --text-secondary: #9aa3bf;
-  --text-muted: #5c6480;
-  --accent: #7c6aef;
-  --accent-light: #a99bf5;
-  --accent-soft: rgba(124, 106, 239, 0.12);
-  --accent-border: rgba(124, 106, 239, 0.25);
-  --accent-glow: rgba(124, 106, 239, 0.35);
-  --magenta: #e879f9;
-  --magenta-soft: rgba(232, 121, 249, 0.1);
-  --deep: #1a1040;
-  --cyan: #38bdf8;
-  --cyan-glow: rgba(56, 189, 248, 0.22);
-  --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-  --gradient-text: linear-gradient(135deg, #a5b4fc 0%, #c084fc 45%, #f9a8d4 100%);
-  --gradient-luxe: linear-gradient(160deg, rgba(99, 102, 241, 0.1) 0%, transparent 45%, rgba(236, 72, 153, 0.08) 100%);
+  --bg-primary: #05020c; /* Deep violet-black */
+  --bg-secondary: #0a0618; /* Dark violet-gray */
+  --bg-card: #120b24; /* Card background */
+  --bg-card-hover: #1b1234; /* Card hover background */
+  --border: rgba(109, 40, 217, 0.15); /* Purple border */
+  --border-hover: rgba(16, 185, 129, 0.3); /* Mint border hover */
+  --text-primary: #f2effc; /* Soft lavender white */
+  --text-secondary: #a49ebf; /* Lavender grey */
+  --text-muted: #645f80; /* Muted lavender grey */
+  --accent: #6d28d9; /* Deep purple/violet */
+  --accent-light: #a78bfa; /* Light purple */
+  --accent-soft: rgba(109, 40, 217, 0.12);
+  --accent-border: rgba(109, 40, 217, 0.25);
+  --accent-glow: rgba(109, 40, 217, 0.35);
+  --magenta: #10b981; /* Mint green */
+  --magenta-soft: rgba(16, 185, 129, 0.1);
+  --deep: #12072b;
+  --cyan: #10b981; /* Mint green */
+  --cyan-glow: rgba(16, 185, 129, 0.22);
+  --gradient: linear-gradient(135deg, #6d28d9 0%, #10b981 100%); /* Purple-to-Teal gradient */
+  --gradient-text: linear-gradient(135deg, #c084fc 0%, #34d399 100%); /* Text purple-to-teal */
+  --gradient-luxe: linear-gradient(160deg, rgba(109, 40, 217, 0.08) 0%, transparent 45%, rgba(16, 185, 129, 0.06) 100%);
   --radius: 12px;
   --radius-lg: 20px;
   --radius-xl: 28px;
@@ -660,7 +660,7 @@ button, input, textarea {
 .video-thumbnail {
   position: relative;
   aspect-ratio: 16/10;
-  background: linear-gradient(135deg, #14102a 0%, #101828 50%, #1a0e28 100%);
+  background: linear-gradient(135deg, #120b24 0%, #0a111a 50%, #1a0b24 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -861,14 +861,14 @@ button, input, textarea {
 .portfolio-thumb {
   position: relative;
   aspect-ratio: 16/9;
-  background: linear-gradient(135deg, #1a1438 0%, #12182a 100%);
+  background: linear-gradient(135deg, #1a0b35 0%, #0a1714 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .portfolio-thumb.thumb-2 {
-  background: linear-gradient(135deg, #101a30 0%, #1a1430 100%);
+  background: linear-gradient(135deg, #0a1714 0%, #1a0b35 100%);
 }
 
 .portfolio-info {
@@ -925,16 +925,17 @@ button, input, textarea {
 .portfolio-thumb-sm {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
-  background: linear-gradient(180deg, #14102a 0%, #0c0e18 100%);
+  height: 0;
+  padding-bottom: 177.78%; /* 9:16 aspect ratio fallback */
+  background: linear-gradient(180deg, #120b24 0%, #0a0618 100%);
   overflow: hidden;
 }
 
-.portfolio-thumb-sm.thumb-3 { background: linear-gradient(180deg, #1e1438 0%, #101428 100%); }
-.portfolio-thumb-sm.thumb-4 { background: linear-gradient(180deg, #141e30 0%, #0e1220 100%); }
-.portfolio-thumb-sm.thumb-5 { background: linear-gradient(180deg, #281430 0%, #101020 100%); }
-.portfolio-thumb-sm.thumb-6 { background: linear-gradient(180deg, #142028 0%, #0e1018 100%); }
-.portfolio-thumb-sm.thumb-7 { background: linear-gradient(180deg, #201430 0%, #101420 100%); }
+.portfolio-thumb-sm.thumb-3 { background: linear-gradient(180deg, #1a0f30 0%, #061a12 100%); }
+.portfolio-thumb-sm.thumb-4 { background: linear-gradient(180deg, #0f1a30 0%, #0f1c16 100%); }
+.portfolio-thumb-sm.thumb-5 { background: linear-gradient(180deg, #220f30 0%, #0a171c 100%); }
+.portfolio-thumb-sm.thumb-6 { background: linear-gradient(180deg, #0f2230 0%, #06141a 100%); }
+.portfolio-thumb-sm.thumb-7 { background: linear-gradient(180deg, #1c0f30 0%, #0c1a15 100%); }
 
 .portfolio-item h4 {
   padding: 16px;
